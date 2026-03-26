@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!--
+        natario1/CameraView
+        cameraMode="video" required for continuous FrameProcessor delivery.
+    -->
+    <com.otaliastudios.cameraview.CameraView
+        android:id="@+id/cameraView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cameraFacing="front"
+        app:cameraAudio="off"
+        app:cameraPreview="glSurface"
+        app:cameraMode="video" />
+
+    <!-- GraphicOverlay: draws GREEN (live) or ORANGE (capture) face rectangles -->
+    <com.ibrahimcanerdogan.facedetectionapp.graphic.GraphicOverlay
+        android:id="@+id/viewGraphicOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Bottom control bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingBottom="28dp"
+        android:paddingHorizontal="16dp">
+
+        <!-- Stop camera -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/buttonStopCamera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:contentDescription="@string/stop_camera"
+            android:src="@drawable/icon_stop"
+            android:visibility="visible"
+            app:fabSize="mini" />
+
+        <!-- CAPTURE PHOTO (centre, large) — orange tint to hint the feature -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/buttonCapturePhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:contentDescription="@string/capture_photo"
+            android:src="@drawable/icon_capture"
+            android:visibility="visible"
+            app:backgroundTint="#FF6600"
+            app:fabSize="normal" />
+
+        <!-- Switch front / back camera -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/buttonTurnCamera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:contentDescription="@string/turn_camera"
+            android:src="@drawable/icon_change"
+            app:fabSize="mini" />
+
+        <!-- Start camera (shown only when camera is stopped) -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/buttonStartCamera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:contentDescription="@string/start_camera"
+            android:src="@drawable/icon_play"
+            android:visibility="invisible"
+            app:fabSize="mini" />
+
+    </LinearLayout>
+</FrameLayout>
